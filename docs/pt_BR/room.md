@@ -6,9 +6,9 @@ As salas(rooms) são derivadas da classe [PIXI.Container](https://pixijs.downloa
 
 ## A sala(room) atual, `ct.room`.
 
-`ct.room` sempre aponta para a sala(room) atual. Se você tem várias salas(rooms) em camadas umas sobre as outras, o `ct.room` apontará para a sala(room) inicial que foi criada no início do jogo, ou apontará para a sala(room) definida após a chamada do método [`ct.rooms.switch`](ct.rooms.html#ct-rooms-switch-newroomname).
+`room` sempre aponta para a sala(room) atual. Se você tem várias salas(rooms) em camadas umas sobre as outras, o `room` apontará para a sala(room) inicial que foi criada no início do jogo, ou apontará para a sala(room) definida após a chamada do método [`rooms.switch`](ct.rooms.html#ct-rooms-switch-newroomname).
 
-Para obter as salas(rooms) que estão em camdas, você pode usar [`ct.rooms.list`](ct.rooms.html#ct-rooms-list-roomname), ou [`this.getRoom`](Copy.html#copy-getroom) de dentro dos eventos das copies.
+Para obter as salas(rooms) que estão em camdas, você pode usar [`rooms.list`](ct.rooms.html#ct-rooms-list-roomname), ou [`this.getRoom`](copy.html#copy-getroom) de dentro dos eventos das copies.
 
 ## Salas(rooms) de UI e de Jogo
 
