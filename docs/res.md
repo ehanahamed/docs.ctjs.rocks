@@ -128,7 +128,7 @@ res.loadTexture('Background_42.png', 'Background_42', {
 })
 .then(textureName => {
     // Adds a background to the current room at depth -100.
-    ct.backgrounds.add(textureName, 0, -100);
+    backgrounds.add(textureName, 0, -100);
 });
 ```
 @tab CoffeeScript
@@ -140,7 +140,7 @@ textureSettings =
 res.loadTexture 'Background_42.png', 'Background_42', textureSettings
 .then (textureName) =>
     # Adds a background to the current room at depth -100.
-    ct.backgrounds.add textureName, 0, -100
+    backgrounds.add textureName, 0, -100
 ```
 :::
 
