@@ -3,7 +3,7 @@
 Copies are the entities that interact with each other on the screen and what drives the game's logic. They derive from various Pixi.js classes depending on the base class you select.
 
 ::: tip
-To create and find copies in a running game, see the [`ct.templates` reference](ct.templates.html).
+To create and find copies in a running game, see the [`templates` reference](templates.html).
 :::
 
 ## Base Classes
