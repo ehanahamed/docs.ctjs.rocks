@@ -3,7 +3,7 @@
 Copies são entidades que interagem uma com as outras na tela, o que impulsiona a lógica do jogo. Elas são derividas da classe `AnimatedSprite` do Pixi, você pode encontrar [muito mais parâmetros](https://pixijs.download/release/docs/PIXI.AnimatedSprite.html) no site de documentação deles.
 
 ::: tip Dica
-Para criar e encontrar as copies, veja a [referência em `ct.templates`](ct.templates.html).
+Para criar e encontrar as copies, veja a [referência em `templates`](templates.html).
 :::
 
 ## Movendo as Copies
