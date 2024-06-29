@@ -249,14 +249,14 @@ Il tuo personaggio riesce a oltrepassare buchi larghi una cella della griglia. P
 
 Se avviamo il gioco ora, saremo in grado di spostare il robot in giro. C'è un problema, però: la camera non si muove!
 
-Non è un problema difficile da risolvere, però. Se scaviamo nei documenti ct.js, troveremo l'entità `ct.camera` con le giuste proprietà `ct.camera.follow`, `ct.camera.borderX` ed `ct.camera.borderY` per seguire una copia che si muove.
+Non è un problema difficile da risolvere, però. Se scaviamo nei documenti ct.js, troveremo l'entità `camera` con le giuste proprietà `camera.follow`, `camera.borderX` ed `camera.borderY` per seguire una copia che si muove.
 
 Apri il template `Robot` e il relativo codice "Creation". Aggiungi questo code in basso:
 
 ```js
-ct.camera.follow = this;
-ct.camera.borderX = 450;
-ct.camera.borderY = 200;
+camera.follow = this;
+camera.borderX = 450;
+camera.borderY = 200;
 ```
 
 La camera ora seguirà il Robot.

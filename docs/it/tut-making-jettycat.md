@@ -168,21 +168,21 @@ Se eseguiamo il progetto ora, vedremo che il gatto si sposta da sinistra a destr
 
 ### Muovere la fotocamera
 
-Ct.js ha un'entità `ct.camera` che è responsabile della visualizzazione di elementi sullo schermo. Ha molte funzionalità e una di queste è quella di seguire una copia (lo sprite del giocatore per esempio).
+Ct.js ha un'entità `camera` che è responsabile della visualizzazione di elementi sullo schermo. Ha molte funzionalità e una di queste è quella di seguire una copia (lo sprite del giocatore per esempio).
 
 Apri l'evento "Creation" del nostro gatto e aggiungi questo codice:
 
 ```js
-ct.camera.follow = this;
-ct.camera.followY = false;
-ct.camera.shiftX = 250;
+camera.follow = this;
+camera.followY = false;
+camera.shiftX = 250;
 ```
 
-`ct.camera.follow` collega la camera alla copia che dovrebbe seguire e gli diciamo di seguire il gatto impostando il suo valore su `this`. `this` si riferisce alla copia a cui questa riga di codice appartiene. Anche le stanze hanno i loro eventi e le loro parole chiave `this`.
+`camera.follow` collega la camera alla copia che dovrebbe seguire e gli diciamo di seguire il gatto impostando il suo valore su `this`. `this` si riferisce alla copia a cui questa riga di codice appartiene. Anche le stanze hanno i loro eventi e le loro parole chiave `this`.
 
-`ct.camera.followY = false;` indica che non è necessario spostare la telecamera verticalmente (mediante l'asse Y). Lo faremo scorrere solo verso destra.
+`camera.followY = false;` indica che non è necessario spostare la telecamera verticalmente (mediante l'asse Y). Lo faremo scorrere solo verso destra.
 
-`ct.camera.shiftX = 250;` dice che vogliamo che la fotocamera rimanga di 250 pixel a destra rispetto al gatto. Per impostazione predefinita, si posiziona in modo che il gatto rimanga al centro della finestra.
+`camera.shiftX = 250;` dice che vogliamo che la fotocamera rimanga di 250 pixel a destra rispetto al gatto. Per impostazione predefinita, si posiziona in modo che il gatto rimanga al centro della finestra.
 
 Se eseguiamo il gioco ora, la telecamera seguirà il nostro gatto. Sìì!
 
@@ -219,7 +219,7 @@ if (!this.gameover && ct.place.occupied(this, 'Obstacle')) {
     this.speed = 25;
     this.direction = 135;
     // Fermare il movimento della telecamera
-    ct.camera.follow = false;
+    camera.follow = false;
 }
 ```
 
@@ -268,7 +268,7 @@ if (!this.gameover && (ct.place.occupied(this, 'Obstacle') ||
     this.speed = 25;
     this.direction = 135;
     // ferma il movimento della telecamera
-    ct.camera.follow = false;
+    camera.follow = false;
 }
 ```
 
@@ -326,8 +326,8 @@ Clicca "Add an event" e scegli tra i "Timers"  l'evento "Timer 1" ed inserisci q
 this.timer1 = 2
 
 // Crea due tubi
-var tube1 = ct.templates.copy('Tube', ct.camera.right + 250, ct.camera.bottom - 130); // At the bottom of the camera
-var tube2 = ct.templates.copy('Tube', ct.camera.right + 250, ct.camera.top - 70); // At the top
+var tube1 = ct.templates.copy('Tube', camera.right + 250, camera.bottom - 130); // At the bottom of the camera
+var tube2 = ct.templates.copy('Tube', camera.right + 250, camera.top - 70); // At the top
 
 // Cambia la texture del secondo tubo a seconda della texture utilizzata nel primo tubo
 if (tube1.tex === 'Tube_01') { // Il tubo più corto verrà sostituito da un tubo più lungo
@@ -351,7 +351,7 @@ C'è molto codice!
 
 Creiamo due copie usando il template del tubo con il comando `ct.templates.copy (templateName, xPosition, yPosition)`e memorizziamo i riferimenti ad esse in variabili `tube1`e `tube2`. All'inizio, la loro altezza sarà scelta a caso poiché il loro codice "Creation" con `ct.random.dice` verrà eseguito immediatamente dopo la loro creazione. Ciò si tradurrà in un percorso bloccato in alcuni casi, per esempio quando entrambi i tubi si sono rivelati quelli lunghi. Per risolvere questo problema, leggiamo il nome della texture di un primo tubo `tube1`, memorizzata nella sua proprietà `tube1.tex`, e impostiamo la texture del secondo tubo `tube2` in base al valore estratto da `tube1`.
 
-`ct.camera.right`, `ct.camera.left`, `ct.camera.top`, `ct.camera.bottom` rappresentano le coordinate dei confini della vista nelle coordinate del gioco. Qui li usiamo per creare tubi fuori campo, un po' a destra dove finisce la finestra e sopra il bordo inferiore e superiore della finestra.
+`camera.right`, `camera.left`, `camera.top`, `camera.bottom` rappresentano le coordinate dei confini della vista nelle coordinate del gioco. Qui li usiamo per creare tubi fuori campo, un po' a destra dove finisce la finestra e sopra il bordo inferiore e superiore della finestra.
 
 Infine, capovolgiamo il secondo tubo eseguendo `tube2.scale.y = -1`. È esattamente la stessa operazione che faremmo per capovolgere un'immagine verticalmente in un editor grafico. Per informazione, esiste anche `tube2.scale.x` che imposta il suo fattore di scala orizzontale.
 
@@ -373,7 +373,7 @@ Quando generiamo copie nel tempo, il loro numero aumenterà costantemente. Se no
 Aggiungi questo codice all'evento "Frame start" del tubo:
 
 ```js
-if (this.x < ct.camera.left - 150) {
+if (this.x < camera.left - 150) {
     this.kill = true;
 }
 ```
@@ -416,7 +416,7 @@ Questo evento controlla se una stella si scontra con il nostro gatto. Se lo fa, 
 Avremo anche bisogno di questo codice che rimuove le stelle che non sono state raccolte, per prevenire consumo di memoria:
 
 ```js
-if (this.x < ct.camera.left - 150) {
+if (this.x < camera.left - 150) {
     this.kill = true;
 }
 ```
@@ -430,8 +430,8 @@ Nel codice dell'evento "Timer1" della romma `InGame`, aggiungi un paio di righe 
 this.timer1 = 2
 
 // Crea due tubi
-var tube1 = ct.templates.copy('Tube', ct.camera.right + 250, ct.camera.bottom - 130); // At the bottom of the camera
-var tube2 = ct.templates.copy('Tube', ct.camera.right + 250, ct.camera.top - 70); // At the top
+var tube1 = ct.templates.copy('Tube', camera.right + 250, camera.bottom - 130); // At the bottom of the camera
+var tube2 = ct.templates.copy('Tube', camera.right + 250, camera.top - 70); // At the top
 
 // Cambia la texture del secondo tubo a seconda della texture utilizzata nel primo tubo
 if (tube1.tex === 'Tube_01') { // Il tubo più corto verrà sostituito da un tubo più lungo
@@ -450,7 +450,7 @@ tube2.scale.y = -1;
 
 // Crea un bonus a stella con una probabilità del 30% da qualche parte tra il bordo superiore e inferiore, a 300px dalle estremità.
 if (ct.random.chance(30)) {
-    ct.templates.copy('Star', ct.camera.right + 250 + 500, ct.random.range(ct.camera.top + 300, ct.camera.bottom - 300));
+    ct.templates.copy('Star', camera.right + 250 + 500, ct.random.range(camera.top + 300, camera.bottom - 300));
 }
 ```
 
@@ -628,7 +628,7 @@ Ora crea una stanza chiamata `UI_OhNo` con i template creati.
 
 ![Impostazione della stanza di partenza in ct.js](../images/tutorials/tutJettyCat_31.png)
 
-L'ultima cosa di cui abbiamo bisogno è creare questa stanza quando il gatto incontra un ostacolo. Apri il modello `PotatoCat`e trova il punto in cui rileviamo la collisione con la superficie o gli ostacoli nel suo evento "Frame start". Aggiungi questo codice subito dopo la riga con `ct.camera.follow = false;`:
+L'ultima cosa di cui abbiamo bisogno è creare questa stanza quando il gatto incontra un ostacolo. Apri il modello `PotatoCat`e trova il punto in cui rileviamo la collisione con la superficie o gli ostacoli nel suo evento "Frame start". Aggiungi questo codice subito dopo la riga con `camera.follow = false;`:
 
 ```js
 // Aspetta 1000 millisecondi (un secondo)

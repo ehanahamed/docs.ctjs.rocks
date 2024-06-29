@@ -31,7 +31,7 @@ These events are always executed in the following order:
 1. Room's OnCreate is called.
 1. `roomoncreate.js`.
 1. `switch.js` is called.
-1. `ct.camera` is properly positioned.
+1. `camera` is properly positioned.
 
 **At room transition:**
 
@@ -41,7 +41,7 @@ These events are always executed in the following order:
 1. Copies are created here, with all their events and injections.
 1. `roomoncreate.js`
 1. `switch.js`
-1. `ct.camera` is properly positioned.
+1. `camera` is properly positioned.
 
 **At each frame:**
 

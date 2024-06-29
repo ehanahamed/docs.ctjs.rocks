@@ -21,16 +21,16 @@ Qualquer room nova adicionada para a room principal pode ser posta nas coordenad
 ::: tip Dica
 Tecnicamente, ct.js transformará cada layer na fase dependendo da posição da câmera, enquanto que as layers de UI serão deixadas como estão. Isso significa que as coordenadas de mundo Pixi são na verdade coordenadas de UI, a qual não é intuitiva, mas é dessa forma que o objeto câmera é codificado. Portanto, não use as coordenadas de mundo Pixi.
 
-O que isso significa para você? Em primeiro lugar, você não pode reposicionar essas rooms que usam coordenadas de jogo por conta própria, pois elas são gerenciadas pelo `ct.camera` e as mesmas são substituídas por ele. Em vez disso, você pode simplesmente manipular a câmera — ela tem alguns recursos interessantes para o gerenciamento do viewport (janela/tela de visualização). Para mais informação sobre isso, acesse [Trabalhando com o Viewport](/tips-n-tricks/viewport-management.md).
+O que isso significa para você? Em primeiro lugar, você não pode reposicionar essas rooms que usam coordenadas de jogo por conta própria, pois elas são gerenciadas pelo `camera` e as mesmas são substituídas por ele. Em vez disso, você pode simplesmente manipular a câmera — ela tem alguns recursos interessantes para o gerenciamento do viewport (janela/tela de visualização). Para mais informação sobre isso, acesse [Trabalhando com o Viewport](/tips-n-tricks/viewport-management.md).
 
 Em segundo lugar, você pode reposicionar as layers de UI! Isso pode ser usado para criar widgets que se movem pela tela e para animações de slides.
 :::
 
 ## Espaço de UI
 
-O espaço de UI é um retângulo que na horizontal é de `0` até `ct.camera.width` e que na vertical é de `0` até `ct.camera.height`. A menos que o `ct.fittoscreen` com os modos especiais como "Expand" ou "Scaling without letterboxing" seja usado, esse retângulo será igual ao que você define como tamanho de visualização em sua room. Caso contrário, será igual à tela (modo "Expand") ou será mais alta ou mais larga depenendo da sua tela ("Scaling without letterboxing").
+O espaço de UI é um retângulo que na horizontal é de `0` até `camera.width` e que na vertical é de `0` até `camera.height`. A menos que o `ct.fittoscreen` com os modos especiais como "Expand" ou "Scaling without letterboxing" seja usado, esse retângulo será igual ao que você define como tamanho de visualização em sua room. Caso contrário, será igual à tela (modo "Expand") ou será mais alta ou mais larga depenendo da sua tela ("Scaling without letterboxing").
 
-Para atualizar a posição dos seus elementos de UI para que eles fiquem bem alinhados em diferentes tipos de telas, use `ct.camera.width` e `ct.camera.height`. Para alinhar interfaces básicas automaticamente, use `ct.camera.realign(room);`.
+Para atualizar a posição dos seus elementos de UI para que eles fiquem bem alinhados em diferentes tipos de telas, use `camera.width` e `camera.height`. Para alinhar interfaces básicas automaticamente, use `camera.realign(room);`.
 
 ## Convertendo as Coordenadas de um Espaço para o Outro
 
@@ -43,22 +43,22 @@ Eles retornarão um objeto (`PIXI.Point`) com duas propriedades: as componentes 
 
 A câmera também tem um número de métodos e propriedades que retornam a posição no espaço de jogo:
 
-* `ct.camera.left` — retorna a posição do lado esquerdo onde a região retangular visível termina;
-* `ct.camera.right` — retorna a posição do lado direito onde a região retangular visível termina;
-* `ct.camera.top` — retorna a posição da parte superior onde a região retangular visível termina;
-* `ct.camera.bottom` — retorna a posição da parte inferior onde a região retangular visível termina.
+* `camera.left` — retorna a posição do lado esquerdo onde a região retangular visível termina;
+* `camera.right` — retorna a posição do lado direito onde a região retangular visível termina;
+* `camera.top` — retorna a posição da parte superior onde a região retangular visível termina;
+* `camera.bottom` — retorna a posição da parte inferior onde a região retangular visível termina.
 
 ::: tip Observação
-O retângulo de visualização da câmera tem a origem do seu sistema de coordenadas definida no centro, por esse motivo é que o `ct.camera.left` termina do lado esquerdo, porque a origem é iniciada a partir do centro.
+O retângulo de visualização da câmera tem a origem do seu sistema de coordenadas definida no centro, por esse motivo é que o `camera.left` termina do lado esquerdo, porque a origem é iniciada a partir do centro.
 :::
 
 Eles podem ser utilizados por exemplo, para determinar se uma copy está visível ou não.
 
 Para viewport (janela/tela de visualização) rotacionados, use estes métodos:
 
-* `ct.camera.getTopLeftCorner();`
-* `ct.camera.getTopRightCorner();`
-* `ct.camera.getBottomLeftCorner();`
-* `ct.camera.getBottomRightCorner();`
+* `camera.getTopLeftCorner();`
+* `camera.getTopRightCorner();`
+* `camera.getBottomLeftCorner();`
+* `camera.getBottomRightCorner();`
 
 Eles retornarão um objeto (`PIXI.Point`) com duas propriedades: as componentes `x` e `y`.

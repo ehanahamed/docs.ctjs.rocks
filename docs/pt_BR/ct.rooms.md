@@ -88,4 +88,4 @@ O resultado dessa função não é atualizada e deve ser usada apenas durante o 
 
 ## Gerenciando o viewport atual
 
-Desde a versão 1.3, que viewport é gerenciado pelo objeto especial [ct.camera](/ct.camera.html).
+Desde a versão 1.3, que viewport é gerenciado pelo objeto especial [camera](/camera.html).

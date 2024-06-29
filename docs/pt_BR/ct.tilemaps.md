@@ -100,8 +100,8 @@ const tilemap = ct.tilemaps.create(-100);
 ct.noise.setSeed(); // Vamos randomizar o seed a cada início
 
 // Vamos assumir que você tem uma textura chamada 'RockTile' de dimensões de 64x64px.
-for (var x = 0; x < ct.camera.width / 64; x++) {
-    for (var y = 0; y < ct.camera.height / 64; y++) {
+for (var x = 0; x < camera.width / 64; x++) {
+    for (var y = 0; y < camera.height / 64; y++) {
         var value = ct.noise.simplex2d(x / 7, y / 7); // Retorna um valor de -1 até 1.
         if (value > 0) {
             const tile = tilemap.addTile('RockTile', x*64, y*64);

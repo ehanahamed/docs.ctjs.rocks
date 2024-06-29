@@ -31,7 +31,7 @@ Esses eventos são sempre executados na seguinte ordem:
 1. O OnCreate da room é invocado.
 1. `roomoncreate.js`.
 1. `switch.js` é invocado.
-1. `ct.camera` é devidamente posicionada.
+1. `camera` é devidamente posicionada.
 
 **Na transição de uma room para outra:**
 
@@ -41,7 +41,7 @@ Esses eventos são sempre executados na seguinte ordem:
 1. As copies são criadas aqui, com todos os seus  eventos e injeções.
 1. `roomoncreate.js`
 1. `switch.js`
-1. `ct.camera` é devidamente posicionada.
+1. `camera` é devidamente posicionada.
 
 **A cada frame:**
 

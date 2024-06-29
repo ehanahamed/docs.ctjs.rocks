@@ -138,8 +138,8 @@ this.x += 8 * ct.delta * ct.actions.MoveX.value; // Spostamento lungo l'asse x
 if (this.x < 0) { // La nave ha oltrepassato il bordo sinistro?
     this.x = 0; // Torna al bordo sinistro
 }
-if (this.x > ct.camera.width) { // La nave ha oltrepassato il bordo destro?
-    this.x = ct.camera.width; // Torna al bordo destro
+if (this.x > camera.width) { // La nave ha oltrepassato il bordo destro?
+    this.x = camera.width; // Torna al bordo destro
 }
 
 this.move();
@@ -151,7 +151,7 @@ Qui stiamo usando le azioni create poco fa. Per prima cosa, proviamo a spostare 
 
 Infine, moltiplichiamo il nostro valore di velocità intermedia per la velocità desiderata, `8`.
 
-Successivamente controlliamo se la sua coordinata X risulta fuori dallo schermo. Qui `0` indica il lato sinistro del livello e `ct.camera.width` indica la dimensione orizzontale della finestra, che definisce il lato destro.
+Successivamente controlliamo se la sua coordinata X risulta fuori dallo schermo. Qui `0` indica il lato sinistro del livello e `camera.width` indica la dimensione orizzontale della finestra, che definisce il lato destro.
 
 ::: tip Da solo!
 Aggiungi un movimento verticale al giocatore. Quindi, prova a limitare il suo movimento in modo che la nave non possa volare al di sopra del centro dello schermo.
@@ -193,7 +193,7 @@ Modificheremo il codice di `Frame start` in modo che i nemici vengano eliminati 
 ```js
 this.move();
 
-if (this.y > ct.camera.height + 80) {
+if (this.y > camera.height + 80) {
     this.kill = true;
 }
 ```
@@ -218,7 +218,7 @@ L'evento `Frame start` sarà uguale a quello di `EnemyShip`.
 ```js Frame start event
 this.move();
 
-if (this.y > ct.camera.height + 80) {
+if (this.y > camera.height + 80) {
     this.kill = true;
 }
 ```
@@ -331,7 +331,7 @@ C'è anche `this.scale.x` e `this.scale.y`, che impostano la scala orizzontale e
 Il codice di `Frame start` sarà il seguente:
 
 ``` js
-if (this.y > ct.camera.height + 40) {
+if (this.y > camera.height + 40) {
     this.kill = true;
 }
 
@@ -371,7 +371,7 @@ Quindi aggiungi questo codice nell'evento `Timer 1` per generare gli asteroidi n
 ```js
 // Timer per gli asteroidi
 this.timer1 = ct.random.range(0.3, 3);
-ct.templates.copy(ct.random.dice('Asteroid_Big', 'Asteroid_Medium'), ct.random(ct.camera.width), -100);
+ct.templates.copy(ct.random.dice('Asteroid_Big', 'Asteroid_Medium'), ct.random(camera.width), -100);
 ```
 
 Quindi aggiungi questo codice nell'evento `Timer 2` per generare i nemici:
@@ -379,7 +379,7 @@ Quindi aggiungi questo codice nell'evento `Timer 2` per generare i nemici:
 ```js
 // Timer per i nemici
 this.timer2 = ct.random.range(3, 6);
-ct.templates.copy('EnemyShip', ct.random(ct.camera.width), -100);
+ct.templates.copy('EnemyShip', ct.random(camera.width), -100);
 ```
 
 Questo è tutto ciò di cui abbiamo bisogno per generare asteroidi e nemici!
@@ -475,7 +475,7 @@ La gestione delle vite è simile alla gestione dei punti. Aggiungi questo codice
 this.lives = 3;
 this.livesLabel = new PIXI.Text('Lives: ' + this.lives, ct.styles.get('ScoreText'));
 this.addChild(this.livesLabel);
-this.livesLabel.x = ct.camera.width - 200;
+this.livesLabel.x = camera.width - 200;
 this.livesLabel.y = 30;
 this.livesLabel.depth = 1000;
 ```

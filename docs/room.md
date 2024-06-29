@@ -12,7 +12,7 @@ To get layered rooms, you can use [`rooms.list`](rooms.html#rooms-list-roomname)
 
 ## UI and Gameplay rooms
 
-Rooms can be put either into UI coordinate space or gameplay coordinate space. Gameplay rooms are managed by `ct.camera`, and cannot be moved manually. But UI rooms can be: for example, to move smaller widgets around the viewport.
+Rooms can be put either into UI coordinate space or gameplay coordinate space. Gameplay rooms are managed by `camera`, and cannot be moved manually. But UI rooms can be: for example, to move smaller widgets around the viewport.
 
 ::: tip
 More about this concept at [Game and UI Coordinates](tips-n-tricks/game-and-ui-coordinates.html). For viewport management, see [Working with Viewport](tips-n-tricks/viewport-management.html).
