@@ -137,8 +137,8 @@ this.x += 8 * ct.delta * ct.actions.MoveX.value; // Move pelo eixo X
 if (this.x < 0) { // A nave saiu dos limites pela esquerda?
     this.x = 0; // Volte para os limites novamente
 }
-if (this.x > ct.camera.width) { // A nave saiu dos limites pela direita?
-    this.x = ct.camera.width; // Volte para os limites novamente
+if (this.x > camera.width) { // A nave saiu dos limites pela direita?
+    this.x = camera.width; // Volte para os limites novamente
 }
 
 this.move();
@@ -150,7 +150,7 @@ Aqui nós estamos usando as ações criadas. Primeiro, tentamos mover a nave hor
 
 Por fim, multiplicamos o valor obtido através `ct.delta * ct.actions.MoveX.value` pelo valor da velocidade que desejamos, `8`.
 
-Depois verificamos se a coordenada X está fora da viewport(janela de visualização). Aqui `0` representa o lado esquerdo da room e `ct.camera.width` representa a largura horizontal do jogo.
+Depois verificamos se a coordenada X está fora da viewport(janela de visualização). Aqui `0` representa o lado esquerdo da room e `camera.width` representa a largura horizontal do jogo.
 
 ::: tip Faça você mesmo!
 Adicione um movimento vertical para o player. Depois tente limitar esse movimento para que assim a nave não possa voar acima ou abaixo dos limites da viewport.
@@ -389,13 +389,13 @@ Então adicione esse código para gerar inimigos com ao longo do tempo:
 this.asteroidTimer -= ct.delta;
 if (this.asteroidTimer <= 0) {
     this.asteroidTimer = ct.random.range(20, 200);
-    ct.templates.copy(ct.random.dice('Asteroid_Big', 'Asteroid_Medium'), ct.random(ct.camera.width), -100);
+    ct.templates.copy(ct.random.dice('Asteroid_Big', 'Asteroid_Medium'), ct.random(camera.width), -100);
 }
 
 this.enemyTimer -= ct.delta;
 if (this.enemyTimer <= 0) {
     this.enemyTimer = ct.random.range(180, 400);
-    ct.templates.copy('EnemyShip', ct.random(ct.camera.width), -100);
+    ct.templates.copy('EnemyShip', ct.random(camera.width), -100);
 }
 ```
 
@@ -508,7 +508,7 @@ Gerenciar as vidas é similar ao gerenciamento da pontuação. Adicione esse có
 this.lives = 3;
 this.livesLabel = new PIXI.Text('Lives: ' + this.lives, ct.styles.get('ScoreText'));
 this.addChild(this.livesLabel);
-this.livesLabel.x = ct.camera.width - 200;
+this.livesLabel.x = camera.width - 200;
 this.livesLabel.y = 30;
 this.livesLabel.depth = 1000;
 ```

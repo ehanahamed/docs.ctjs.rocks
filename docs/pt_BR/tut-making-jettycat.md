@@ -169,21 +169,21 @@ Se você executar o projeto, verá que o nosso gato se move da esquerda para a d
 
 ### Movendo a câmera
 
-Ct.js tem uma entidade `ct.camera` a qual é responsável por mostrar as coisas em sua tela. Ela tem um monte de recursos, e um deles é o de seguir uma copy.
+Ct.js tem uma entidade `camera` a qual é responsável por mostrar as coisas em sua tela. Ela tem um monte de recursos, e um deles é o de seguir uma copy.
 
 Abra a aba "On Create" do nosso gato e adicione o código abaixo:
 
 ```js
-ct.camera.follow = this;
-ct.camera.followY = false;
-ct.camera.shiftX = 250;
+camera.follow = this;
+camera.followY = false;
+camera.shiftX = 250;
 ```
 
-`ct.camera.follow` se conecta com uma copy que ele deve seguir, e determinamos que que ele deve seguir o gato através do `this`. `this` representa uma referência para a copy que executa o código. As rooms(salas) também têm os seus eventos e a palavra reservada `this`.
+`camera.follow` se conecta com uma copy que ele deve seguir, e determinamos que que ele deve seguir o gato através do `this`. `this` representa uma referência para a copy que executa o código. As rooms(salas) também têm os seus eventos e a palavra reservada `this`.
 
-`ct.camera.followY = false;` determina que não precisamos mover a câmera verticalmente, eixo Y.Precisamos apenas mover a câmera para a direita.
+`camera.followY = false;` determina que não precisamos mover a câmera verticalmente, eixo Y.Precisamos apenas mover a câmera para a direita.
 
-`ct.camera.shiftX = 250;` determina que queremos que a câmera fique 250 pixels à direita do gato. Por padrão, o foco é que o gato fique no centro do viewport(janela de visualização).
+`camera.shiftX = 250;` determina que queremos que a câmera fique 250 pixels à direita do gato. Por padrão, o foco é que o gato fique no centro do viewport(janela de visualização).
 
 Se executarmos o jogo agora, a câmera seguirá o nosso gato graciosamente. Maravilha!
 
@@ -220,7 +220,7 @@ if (!this.gameover && ct.place.occupied(this, 'Obstacle')) {
     this.speed = 25;
     this.direction = 135;
     // Para o movimento da câmera
-    ct.camera.follow = false;
+    camera.follow = false;
 }
 ```
 
@@ -269,7 +269,7 @@ if (!this.gameover && (ct.place.occupied(this, 'Obstacle') ||
     this.speed = 25;
     this.direction = 135;
     // Para o movimento da câmera
-    ct.camera.follow = false;
+    camera.follow = false;
 }
 ```
 
@@ -331,8 +331,8 @@ if (this.spawnTimer <= 0) {
     this.spawnTimer += ct.speed * 2;
 
     // Cria dois canos
-    var tube1 = ct.templates.copy('Tube', ct.camera.right + 250, ct.camera.bottom - 130); // Na parte inferior da câmera
-    var tube2 = ct.templates.copy('Tube', ct.camera.right + 250, ct.camera.top - 70); // No topo
+    var tube1 = ct.templates.copy('Tube', camera.right + 250, camera.bottom - 130); // Na parte inferior da câmera
+    var tube2 = ct.templates.copy('Tube', camera.right + 250, camera.top - 70); // No topo
 
     // Altera a segunda textura do cano dependendo de qual textura é usada no primeiro cano
     if (tube1.tex === 'Tube_01') { // Cano mais curto resultará em cano mais longo
@@ -357,7 +357,7 @@ Existe um monte de código!
 
 Criamos duas copoes com `ct.templates.copy(templateName, xPosition, yPosition)` e guardamos as suas referências nas variáveis `tube1` e `tube2`. No início, a sua altura será completamente normal, uma que o código com `ct.random.dice` em "On Create" executará imediatamente após a sua criação. Isso resultará em um caminho bloqueado em boa parte dos casos quando os dois canos forem os longos. Para corrigir isso, lemos o nome da primeira textura do primeiro cano `tube1` com `tube1.tex` e definimos a textura do segundo cano `tube2` dependendo do valor extraído.
 
-`ct.camera.right`, `ct.camera.left`, `ct.camera.top`, `ct.camera.bottom` representa as coordenadas que limita a visualização nas coordenadas de jogo. Aqui as usamos para criar canos fora da tela, um pouco à direita de onde a viewport(janela de visualiação) finaliza e acima da aresta inferior e superior da viewport.
+`camera.right`, `camera.left`, `camera.top`, `camera.bottom` representa as coordenadas que limita a visualização nas coordenadas de jogo. Aqui as usamos para criar canos fora da tela, um pouco à direita de onde a viewport(janela de visualiação) finaliza e acima da aresta inferior e superior da viewport.
 
 E por fim, fazemos um flip(giro) no segundo cano através da execução da linha `tube2.scale.y = -1`. É exatamente a mesma operação feita quando flipping(giramos) uma imagem verticalmente em um editor gráfico. Apenas como informação, também existe `tube2.scale.x` para redimensionamento e flip horizontal.
 
@@ -379,7 +379,7 @@ Quando geramos copies ao decorrer do tempo, a sua quantidade aumentará constant
 Adicione o código abaixo na aba "On Step" do nosso cano:
 
 ```js
-if (this.x < ct.camera.left - 150) {
+if (this.x < camera.left - 150) {
     this.kill = true;
 }
 ```
@@ -418,7 +418,7 @@ if (ct.place.meet(this, 'PotatoCat')) {
 Também precisaremos evitar o vazamento de memória e remover as estrelas que não foram coletadas:
 
 ```js
-if (this.x < ct.camera.left - 150) {
+if (this.x < camera.left - 150) {
     this.kill = true;
 }
 ```
@@ -437,8 +437,8 @@ if (this.spawnTimer <= 0) {
     this.spawnTimer += ct.speed * 2;
 
     // Cria dois canos
-    var tube1 = ct.templates.copy('Tube', ct.camera.right + 250, ct.camera.bottom - 130); // // Na parte inferior da câmera
-    var tube2 = ct.templates.copy('Tube', ct.camera.right + 250, ct.camera.top - 70); // No topo
+    var tube1 = ct.templates.copy('Tube', camera.right + 250, camera.bottom - 130); // // Na parte inferior da câmera
+    var tube2 = ct.templates.copy('Tube', camera.right + 250, camera.top - 70); // No topo
 
     // Altera a segunda textura do cano dependendo de qual textura é usada no primeiro cano
     if (tube1.tex === 'Tube_01') { // Cano mais curto resultará em cano mais longo
@@ -457,7 +457,7 @@ if (this.spawnTimer <= 0) {
 
     // Cria uma estrela bônus com 30% de chance de está em algum lugar entre a parte superior e inferior, com um espaço de 300px entre a parte superior e inferior.
     if (ct.random.chance(30)) {
-        ct.templates.copy('Star', ct.camera.right + 250 + 500, ct.random.range(ct.camera.top + 300, ct.camera.bottom - 300));
+        ct.templates.copy('Star', camera.right + 250 + 500, ct.random.range(camera.top + 300, camera.bottom - 300));
     }
 }
 ```
@@ -636,7 +636,7 @@ Agora criaremos uma room chamada `UI_OhNo` com os templates criados.
 
 ![Definindo uma room inicial em ct.js](./../images/tutorials/tutJettyCat_31.png)
 
-A última coisa que precisamos é criar essa room quando o gato colidir com um obstáculo. Abra o template `PotatoCat` e localize o lugar onde detectamos as colisões com o chão e com os obstáculos em sua aba "On Step". Adicione o trecho de código abaixo após a linha com `ct.camera.follow = false;`:
+A última coisa que precisamos é criar essa room quando o gato colidir com um obstáculo. Abra o template `PotatoCat` e localize o lugar onde detectamos as colisões com o chão e com os obstáculos em sua aba "On Step". Adicione o trecho de código abaixo após a linha com `camera.follow = false;`:
 
 ```js
 // Espera por 1000 milissegundos (um segundo)

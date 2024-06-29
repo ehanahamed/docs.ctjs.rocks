@@ -248,14 +248,14 @@ O personagem pode apresentar falhas de colisão, caso isso aconteça você preci
 
 Se você executar o jogo agora, você verá que agora podemos mover o nosso Robô. Mas existe um problema: a câmera não se move!
 
-Isso não é um problema difícil. Se a gente for na documentação do ct.js e acessar a [seção `ct.camera`](ct.camera.html), notaremos a existência das propriedades `ct.camera.follow`, `ct.camera.borderX` e `ct.camera.borderY` que é exatamente o que precisamos para seguir uma copy.
+Isso não é um problema difícil. Se a gente for na documentação do ct.js e acessar a [seção `camera`](camera.html), notaremos a existência das propriedades `camera.follow`, `camera.borderX` e `camera.borderY` que é exatamente o que precisamos para seguir uma copy.
 
 Abra o tipo `Robot` e no código em "On Create" adicione o código abaixo ao final:
 
 ```js
-ct.camera.follow = this;
-ct.camera.borderX = 450;
-ct.camera.borderY = 200;
+camera.follow = this;
+camera.borderX = 450;
+camera.borderY = 200;
 ```
 
 Agora a câmera seguirá o Robô.

@@ -12,7 +12,7 @@ Para obter as salas(rooms) que estão em camdas, você pode usar [`rooms.list`](
 
 ## Salas(rooms) de UI e de Jogo
 
-As salas(rooms) ponde ser colocadas no espaço de coordenadas de UI ou no espaço de coordenadas de jogo. As salas(rooms) de jogo são gerenciadas por `ct.camera` e não podem ser movidas manualmente. Mas as salas(rooms) de UI podem: por exemplo, para mover pequenos widgets pela viewport(janela de visualização).
+As salas(rooms) ponde ser colocadas no espaço de coordenadas de UI ou no espaço de coordenadas de jogo. As salas(rooms) de jogo são gerenciadas por `camera` e não podem ser movidas manualmente. Mas as salas(rooms) de UI podem: por exemplo, para mover pequenos widgets pela viewport(janela de visualização).
 
 ::: tip Dica
 Mais sobre esse conceito em [Coordenadas de Jogo e de UI](game-and-ui-coordinates.html). Para saber como gerenciar a viewport(janela de visualização), veja [Trabalhando com a Viewport(Janela de Visualização)](viewport-management.html).
