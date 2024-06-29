@@ -1,4 +1,4 @@
-# ct.emitters
+# emitters
 
 O módulo `ct.emitters` permite que você dispare efeitos de partículas, anexando as copies ou fazendo seguir uma.
 
