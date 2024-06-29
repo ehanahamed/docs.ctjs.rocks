@@ -1,12 +1,12 @@
-# ct.camera
+# camera
 
 ::: tip Hey,
-Essa página descreve os métodos e parâmetros do objeto `ct.camera` em forma de referência. Você pode aprender mais sobre técnicas e uso de forma menos formal na [página "Trabalhando com o Viewport"](/viewport-management.html).
+Essa página descreve os métodos e parâmetros do objeto `camera` em forma de referência. Você pode aprender mais sobre técnicas e uso de forma menos formal na [página "Trabalhando com o Viewport"](/viewport-management.html).
 :::
 
 ## Geometria da Câmera
 
-### `ct.camera.x`, `ct.camera.y`
+### `camera.x`, `camera.y`
 
 As coordenadas x e y reais da câmera. Nela não está incluso o efeito de tremer a tela, assim como, pode haver divergência entre `targetX` e `targetY` se a câmera estiver em transição.
 
