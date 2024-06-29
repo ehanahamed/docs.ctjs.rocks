@@ -1,6 +1,6 @@
 # ct.backgrounds
 
-`ct.backgrounds` tem uma API que funciona com os objetos [`Background`](Background.md).
+`ct.backgrounds` tem uma API que funciona com os objetos [`Background`](background.md).
 
 ## Métodos e propriedades
 
@@ -26,10 +26,10 @@ Argumento | Tipo | Descrição
 `depth` | `Number` | *(opcional)* A profundidade em que devemos pôr o background. O padrão é `0`.
 `container` | `PIXI.Container` | *(opcional)* Onde devemos pôr o background. O padrão é `ct.room`, mas pode ser qualquer outra room ou pixi container válido.
 
-**Retorna** a instância [`Background`](Background.html) criada.
+**Retorna** a instância [`Background`](background.html) criada.
 
 ::: tip Dica
-Visite a [documentação da classe `Background`](Background.html) para aprender como ajustar a posição, aparência e movimento de um background.
+Visite a [documentação da classe `Background`](background.html) para aprender como ajustar a posição, aparência e movimento de um background.
 :::
 
 #### Exemplo: Criando um background, definindo a sua transparência e fazendo com que ele se mova horizontalmente
