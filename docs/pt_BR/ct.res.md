@@ -72,10 +72,3 @@ Obtém uma textura pixi.js a partir do nome de uma textura ct.js, então a mesma
 * `frame` — O índice do frame a ser extraído.
 
 Retorna uma simples PIXI.Texture.
-
-## `res.makeSkeleton(name: string, skin?: string): unknown;`
-Cria um esqueleto DragonBones, pronto para ser adicionado em suas copies.
-* `name` - O nome do esqueleto.
-* `skin` - Opcional; permite que você determine a pele necessária.
-
-Retorna o esqueleto criado.
