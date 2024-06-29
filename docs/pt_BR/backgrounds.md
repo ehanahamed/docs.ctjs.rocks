@@ -1,23 +1,23 @@
-# ct.backgrounds
+# backgrounds
 
-`ct.backgrounds` tem uma API que funciona com os objetos [`Background`](background.md).
+`backgrounds` tem uma API que funciona com os objetos [`Background`](background.md).
 
 ## Métodos e propriedades
 
-### `ct.backgrounds.list['TextureName']`
+### `backgrounds.list['TextureName']`
 
 Contém um array com todos os backgrounds da textura atual na room. O array para este ou aquele nome de textura pode está ausente se ainda não houver tais backgrounds, então você pode precisar checar se o próprio array existe antes de tentar acessar algum de seus elementos.
 
 #### Exemplo: Obtém o primeiro background da textura `BG_Sand` e a tornar mais escura
 
 ```js
-if (ct.backgrounds.list['BG_Sand']) {
-    const bg = ct.backgrounds.list['BG_Sand'][0];
+if (backgrounds.list['BG_Sand']) {
+    const bg = backgrounds.list['BG_Sand'][0];
     bg.tint = 0x999999;
 }
 ```
 
-### `ct.backgrounds.add(texName, frame, depth, container)`
+### `backgrounds.add(texName, frame, depth, container)`
 
 Argumento | Tipo | Descrição
 -|-|-
@@ -35,7 +35,7 @@ Visite a [documentação da classe `Background`](background.html) para aprender 
 #### Exemplo: Criando um background, definindo a sua transparência e fazendo com que ele se mova horizontalmente
 
 ```js
-const bg = ct.backgrounds.add('BG_SkyClouds', 0, -1000);
+const bg = backgrounds.add('BG_SkyClouds', 0, -1000);
 bg.alpha = 0.5;
 bg.movementX = 1;
 ```
