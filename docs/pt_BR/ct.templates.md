@@ -24,7 +24,7 @@ bullet.direction = this.direction;
 Você vai precisar de uma ação chamada `Press` que reage ao click do botão esquerdo do mouse. [Leia mais sobre as ações aqui](actions.html).
 
 ```js
-if (ct.actions.Press.down) {
+if (actions.Press.down) {
     ct.templates.copy('Fruit', ct.mouse.x, ct.mouse.y);
 }
 ```

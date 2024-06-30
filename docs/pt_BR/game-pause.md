@@ -15,7 +15,7 @@ ct.pixiApp.ticker.speed = 0;
 E isso é tudo o que você precisa para pausar um jogo. Colocando-o em qualquer evento baseado em ação, por exemplo, adicione isso ao código de OnStep da sua room:
 
 ```js
-if (ct.actions.Pause.pressed) {
+if (actions.Pause.pressed) {
     ct.pixiApp.ticker.speed = 0;
 }
 ```
@@ -29,7 +29,7 @@ Quando esse código executa, `ct.delta` será configurado para 0 em todo lugar, 
 Você agora precisa criar uma forma de retomar o jogo, por exemplo, modificando o código acima em que o mesmo botão tira o jogo da pausa. Também precisaremos adicionar um pouco mais de código para deixá-lo mais prático.
 
 ```js
-if (ct.actions.Pause.pressed) {
+if (actions.Pause.pressed) {
     if (!ct.room.paused) {
         // Isso pode ser usado pelos elementos de UI e de Jogo para parar qualquer ação de jogabilidade que não esteja vinculada ao ct.delta
         ct.room.paused = true;

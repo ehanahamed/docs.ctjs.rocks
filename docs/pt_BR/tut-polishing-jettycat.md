@@ -204,12 +204,12 @@ Vamos adicionar um pouco de dinamismo para esse jato: vamos gerar novas partícu
 Abara a aba "On Step" e adicione o trecho de código abaixo depois da condição "game over":
 
 ```js
-if (ct.actions.Poof.released) {
+if (actions.Poof.released) {
     this.jet.pause();
 }
 ```
 
-Isso pausará o efeito. Para retomá-lo, adicione o trecho de código abaixo para a condição com `if (ct.actions.Poof.down) {…}`:
+Isso pausará o efeito. Para retomá-lo, adicione o trecho de código abaixo para a condição com `if (actions.Poof.down) {…}`:
 
 ```js
 this.jet.resume();
@@ -273,14 +273,14 @@ this.pulsePhase += ct.delta * 0.2;
 
 this.scale.x = this.scale.y = 1 + Math.sin(this.pulsePhase) * 0.1;
 
-if (ct.actions.Poof.pressed) {
+if (actions.Poof.pressed) {
     this.kill = true;
 }
 ```
 
 Aqui estamos passando a propriedade `this.pulsePhase` para `Math.sin`. Definimos um redimensionamento vertical e horizontal da copy para uma onda senoidal mais `1`, esse `1` é para que a copy não seja reduzida de tal forma que nem possamos vê-la. (Sem esse `1 +`, a onda seno oscilaria próximo de 0, o significa perto de 0% do tamanho da copy.)
 
-Quando o usuário clicar/tocar na tela, `ct.actions.Poof.pressed` torna-se `true`, e aqui é onde removemos a copy tão logo o usuário comece a manipular o gato.
+Quando o usuário clicar/tocar na tela, `actions.Poof.pressed` torna-se `true`, e aqui é onde removemos a copy tão logo o usuário comece a manipular o gato.
 
 O último passo é adicioinar essa copy para `UI_InGame`, em algum lugar no centro da view.
 

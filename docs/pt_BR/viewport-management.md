@@ -81,7 +81,7 @@ ct.tween.add({
 Ou você poderia manipular o ângulo da câmera através de entradas de usuário (no evento "On Step"):
 
 ```js
-camera.angle += ct.actions.CameraRotate.value * ct.delta * 5;
+camera.angle += actions.CameraRotate.value * ct.delta * 5;
 ```
 
 :::

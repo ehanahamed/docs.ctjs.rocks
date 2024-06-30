@@ -21,7 +21,7 @@ this.dragging = false;
 Essa variável booleana se tornará `true` se a copy estiver sendo arrastada, caso contrário, será `false`. Então vá para a aba `On Step` e faça o seguinte:
 
 ```js
-if (ct.touch.hovers(this) && ct.actions.TouchAction.pressed) {
+if (ct.touch.hovers(this) && actions.TouchAction.pressed) {
     this.dragging = true;
 }
 ```
@@ -31,7 +31,7 @@ Precisamos que a ação de arrastar seja iniciada quando o usuário pressionar o
 Precisamos também, finalizar o arrasto quando o usuário soltar o botão do mouse enquanto arrasta a copy. Basicamente faremos o seguinte na aba `On Step`.
 
 ```js
-if (this.dragging && ct.actions.TouchAction.released) {
+if (this.dragging && actions.TouchAction.released) {
     this.dragging = false;
 }
 ```
@@ -63,7 +63,7 @@ this.yOffset = 0;
 Agora vamos alterar essas variáveis quando a copy é pressionada pelo cursor do mouse. Então vamos voltar para a aba `On Step` e alterar o corpo da instrução `if` onde a ação de arrastar é iniciada (a copy é pressionada pelo cursor do mouse).
 
 ```js
-if (ct.touch.hovers(this) && ct.actions.TouchAction.pressed) {
+if (ct.touch.hovers(this) && actions.TouchAction.pressed) {
     this.dragging = true;
     this.xOffset = ct.mouse.x - this.x;
     this.yOffset = ct.mouse.y - this.y;

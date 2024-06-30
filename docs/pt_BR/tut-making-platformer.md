@@ -168,10 +168,10 @@ Agora vá para a aba "On Step". Apague a linha padrão `this.move();` e adicione
 ```js
 this.movespeed = 4 * ct.delta; // Velocidade máxima horizontal
 
-if (ct.actions.MoveLeft.down) {
+if (actions.MoveLeft.down) {
     // Se a tecla A ou a seta esquerda do teclado estiver pressionada, então mova para a esquerda
     this.hspeed = -this.movespeed;
-} else if (ct.actions.MoveRight.down) {
+} else if (actions.MoveRight.down) {
     // Se a tecla D ou a seta direita do teclado estiver pressionada, então mova para a direita
     this.hspeed = this.movespeed; 
 } else {
@@ -182,7 +182,7 @@ if (ct.actions.MoveLeft.down) {
 // Verifica se existe um chão sob o robô...
 if (ct.place.occupied(this, this.x, this.y + 1, 'Solid')) {
     // …e se a tecla w ou espaço está pressionada...
-    if (ct.actions.Jump.down) {
+    if (actions.Jump.down) {
         // …então pula!
         this.vspeed = this.jumpSpeed;
     } else {
@@ -200,7 +200,7 @@ O código em "On Step" é executado a cada frame para cada copy. A lógica de mo
 :::
 
 ::: tip Dica
-`ct.actions.YourAction.down` verifica se qualquer tecla que você esteja monitorando nessa ação está atualmente pressionada. Existe também `ct.actions.YourAction.pressed` e `ct.actions.YourAction.released`.
+`actions.YourAction.down` verifica se qualquer tecla que você esteja monitorando nessa ação está atualmente pressionada. Existe também `actions.YourAction.pressed` e `actions.YourAction.released`.
 
 `ct.place.occupied(copy, x, y, group)` verifica se a copy fornecida está colidindo nas coordenadas(x,y) com um grupo específico. Você pode omitir o grupo caso você não precise dele. Esse método retorna `false` no caso de não haver colisão ou uma copy que colidiu primeiro.
 :::
@@ -340,7 +340,7 @@ this.animationSpeed = 0.2;
 Abra mais uma vez o template `Robot` e em sua aba "On Step" modifique o código na seção de movimentação alterando a textura a ser renderizada de acordo com a entrada do usuário e da posição do robô no espaço:
 
 ```js{4,5,6,7,8,9,13,14,15,16,17,18,22,38,39}
-if (ct.actions.MoveLeft.down) {
+if (actions.MoveLeft.down) {
     // Se a tecla A ou a seta esquerda do teclado estiver pressionada, então mova para a esquerda
     this.hspeed = -this.movespeed;
     // Define a animação e o flip(giro) horitonzal do robô para a esquerda
@@ -349,7 +349,7 @@ if (ct.actions.MoveLeft.down) {
         this.play();
     }
     this.scale.x = -1;
-} else if (ct.actions.MoveRight.down) {
+} else if (actions.MoveRight.down) {
     // Se a tecla D ou a seta direita do teclado estiver pressionada, então mova para a direita
     this.hspeed = this.movespeed;
     // Define a animação e o flip(giro) horitonzal do robô para a direita
@@ -367,7 +367,7 @@ if (ct.actions.MoveLeft.down) {
 // Verifica se existe um chão sob o robô...
 if (ct.place.occupied(this, this.x, this.y + 1, 'Solid')) {
     // …e se a tecla w ou espaço está pressionada...
-    if (ct.actions.Jump.down) {
+    if (actions.Jump.down) {
         // …então pula!
         this.vspeed = this.jumpSpeed;
     } else {

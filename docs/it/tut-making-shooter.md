@@ -129,7 +129,7 @@ Scrivi il seguente codice:
  * e "Actions" nella documentazione.
  */
 
-this.x += 8 * ct.delta * ct.actions.MoveX.value; // Spostamento lungo l'asse x
+this.x += 8 * ct.delta * actions.MoveX.value; // Spostamento lungo l'asse x
 
 
 /**
@@ -145,7 +145,7 @@ if (this.x > camera.width) { // La nave ha oltrepassato il bordo destro?
 this.move();
 ```
 
-Qui stiamo usando le azioni create poco fa. Per prima cosa, proviamo a spostare la nave orizzontalmente (di `x`, linea 6). `ct.actions.MoveX` varrà `1` se abbiamo premuto la freccia destra della tastiera o il tasto "D", e varrà `-1` se un giocatore preme la freccia sinistra o il tasto "A".  Se non viene premuto nulla, varrà `0`, disabilitando il movimento orizzontale.
+Qui stiamo usando le azioni create poco fa. Per prima cosa, proviamo a spostare la nave orizzontalmente (di `x`, linea 6). `actions.MoveX` varrà `1` se abbiamo premuto la freccia destra della tastiera o il tasto "D", e varrà `-1` se un giocatore preme la freccia sinistra o il tasto "A".  Se non viene premuto nulla, varrà `0`, disabilitando il movimento orizzontale.
 
 `ct.delta` è necessario per compensare possibili ritardi e cali di FPS. Di solito è uguale `1` e non aggiunge molto, ma accelererà il movimento se alcuni fotogrammi venissero persi.
 

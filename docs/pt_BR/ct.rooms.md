@@ -29,7 +29,7 @@ Semelhante ao `ct.templates.list`, esse objeto contém um array de rooms da fase
 Esse método seguramente remove da fase a room anexada ou prefixada anteriormente. Ele disparará o evento "On Leave" para a room e "On Destroy" para todas as copies da room removida. A room também terá `this.kill` definido para `true` em seu evento. Esse método não pode remover o `ct.room`, a room principal. O parâmetro `room` deve ser uma referência para uma room criada anteriormente, por exemplo:
 
 ```js Criando um menu de pausa usando uma room de UI
-if (ct.actions.TogglePause.released) {
+if (actions.TogglePause.released) {
     if (!this.pauseMenu) { // se um parâmetro `pauseMenu` não foi definido
         this.pauseMenu = ct.rooms.append('UI_Pause'); // cria uma room e define o parâmetro `pauseMenu`
     } else {

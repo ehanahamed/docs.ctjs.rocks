@@ -31,8 +31,8 @@ Por si só, apenas `this.x` e `this.y` afetam a posição visual dos objetos. Pa
 Código em On Step:
 
 ```js
-this.hspeed = ct.actions.MoveHorizontally.value * 5;
-this.vspeed = ct.actions.MoveVertically.value * 5;
+this.hspeed = actions.MoveHorizontally.value * 5;
+this.vspeed = actions.MoveVertically.value * 5;
 this.move();
 ```
 
@@ -156,8 +156,8 @@ Assumindo que você tenha Ações chamada de MoveX e MoveY.
 Código em On Step:
 
 ```js
-this.vspeed = ct.actions.MoveY.value * 10;
-this.hspeed = ct.actions.MoveX.value * 10;
+this.vspeed = actions.MoveY.value * 10;
+this.hspeed = actions.MoveX.value * 10;
 this.moveContinuousByAxes('Solid');
 ```
 
@@ -175,12 +175,12 @@ this.gravityDir = 270;
 Código em On Step:
 
 ```js
-this.hspeed = ct.actions.MoveX.value * 10;
+this.hspeed = actions.MoveX.value * 10;
 
 // Estamos sobre o solo?
 if (ct.place.occupied(this, this.x, this.y + 1, 'Solid')) {
     // Verifique se o player quer pular.
-    if (ct.actions.Jump.down) {
+    if (actions.Jump.down) {
         this.vspeed = -15;
     }
 }
@@ -209,15 +209,15 @@ Código em On Step:
 
 ```js
 // Math.sign retorna -1 se o valor é negativo,  e 1 se o valor é positivo.
-// ct.actions.ActionName.value retorna valores de -1 até 1, e tudo
+// actions.ActionName.value retorna valores de -1 até 1, e tudo
 // entre eles é usado em um gamepad por exemplo. Assim teremos
 // -64 ou 64 em cada dimensão.
 // Para uma configuração adequada de ações, consulte a página Ações em Dicas e truques.
-if (ct.actions.MoveX.pressed) {
-    this.x += Math.sign(ct.actions.MoveX.value) * 64;
+if (actions.MoveX.pressed) {
+    this.x += Math.sign(actions.MoveX.value) * 64;
 }
-if (ct.actions.MoveY.pressed) {
-    this.y += Math.sign(ct.actions.MoveY.value) * 64;
+if (actions.MoveY.pressed) {
+    this.y += Math.sign(actions.MoveY.value) * 64;
 }
 ```
 
@@ -240,11 +240,11 @@ if (this.x % 64 === 0 && this.y % 64 === 0) {
     // Mas também, se pressionarmos as teclas de movimento, aplicamos velocidade.
     // Isso acontecerá se formos encaixados na grade também,
     // pois todo o código está dentro da cláusula `if`.
-    if (ct.actions.MoveX.pressed) {
-        this.vspeed = Math.sign(ct.actions.MoveX.value) * 8;
+    if (actions.MoveX.pressed) {
+        this.vspeed = Math.sign(actions.MoveX.value) * 8;
     }
-    if (ct.actions.MoveY.pressed) {
-        this.hspeed = Math.sign(ct.actions.MoveY.value) * 8;
+    if (actions.MoveY.pressed) {
+        this.hspeed = Math.sign(actions.MoveY.value) * 8;
     }
 }
 
@@ -269,13 +269,13 @@ Código em On Step:
 // Se a copy não está se movendo…
 if (!this.moving) {
     // Verifique se a tecla foi pressionada
-    if (ct.actions.MoveX.down) {
+    if (actions.MoveX.down) {
         // Inicia o movimento
         this.moving = true;
         ct.tween.add({
             obj: this,
             fields: {
-                x: this.x + Math.sign(ct.actions.MoveX.value) * 64
+                x: this.x + Math.sign(actions.MoveX.value) * 64
             }
             duration: 650 // 0.65s
         })
@@ -286,12 +286,12 @@ if (!this.moving) {
         });
     }
     // O mesmo que o de cima, mas só que no eixo Y
-    if (ct.actions.MoveY.down) {
+    if (actions.MoveY.down) {
         this.moving = true;
         ct.tween.add({
             obj: this,
             fields: {
-                y: this.y + Math.sign(ct.actions.MoveY.value) * 64
+                y: this.y + Math.sign(actions.MoveY.value) * 64
             }
             duration: 650
         })

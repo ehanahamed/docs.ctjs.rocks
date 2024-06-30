@@ -169,10 +169,10 @@ Ora vai alla scheda "Frame start". Rimuovi `this.move();` la riga predefinita e 
 ```js
 this.movespeed = 4 * ct.delta; // Velocità orizzontale massima
 
-if (ct.actions.MoveLeft.down) {
+if (actions.MoveLeft.down) {
     // Se il tasto A o la freccia sinistra è mantenuta premuta, spostati a sinistra
     this.hspeed = -this.movespeed;
-} else if (ct.actions.MoveRight.down) {
+} else if (actions.MoveRight.down) {
     // Se il tasto D o la freccia destra è mantenuta premuta, spostati a destra
     this.hspeed = this.movespeed;
 } else {
@@ -183,7 +183,7 @@ if (ct.actions.MoveLeft.down) {
 // Se c'è terreno sotto il robot ...
 if (ct.place.occupied(this, this.x, this.y + 1, 'Solid')) {
     // ... e il tasto W o la barra spaziale è premuta ...
-    if (ct.actions.Jump.down) {
+    if (actions.Jump.down) {
         // ... allora salta!
         this.vspeed = this.jumpSpeed;
     } else {
@@ -201,7 +201,7 @@ Il codice dell'evento "Frame start" viene eseguito ogni frame per ogni copia. Il
 :::
 
 ::: tip
-`ct.actions.YourAction.down`controlla se una qualsiasi chiave che hai elencato in questa azione è attualmente premuta. Ci sono anche `ct.actions.YourAction.pressed`e `ct.actions.YourAction.released`.
+`actions.YourAction.down`controlla se una qualsiasi chiave che hai elencato in questa azione è attualmente premuta. Ci sono anche `actions.YourAction.pressed`e `actions.YourAction.released`.
 
 `ct.place.occupied(copy, x, y, group)`controlla se una data copia ha eventuali collisioni in date coordinate con un gruppo specifico. Puoi omettere il gruppo se non ne hai bisogno. Questo metodo restituisce `false` (nessuna collisione) o la copia con cui si è entrati in collisione per primi.
 :::
@@ -331,7 +331,7 @@ this.animationSpeed = 0.2;
 Apri il codice "Frame start" del `Robot` e modifica la sezione dei movimenti in modo che cambi la texture  disegnata a seconda degli input dell'utente e della posizione del robot nello spazio:
 
 ```js {4,5,6,7,8,9,13,14,15,16,17,18,22,38,39}
-if (ct.actions.MoveLeft.down) {
+if (actions.MoveLeft.down) {
     // Se il tasto A è premuto, spostati a sinistra
     this.hspeed = -this.movespeed;
     // Imposta l'animazione della camminata
@@ -340,7 +340,7 @@ if (ct.actions.MoveLeft.down) {
         this.play();
     }
     this.scale.x = -1;  // e fai guardare verso sinistra
-} else if (ct.actions.MoveRight.down) {
+} else if (actions.MoveRight.down) {
     // Se il tasto D è premuto, spostati a destra
     this.hspeed = this.movespeed;
     // Imposta l'animazione della camminata
@@ -358,7 +358,7 @@ if (ct.actions.MoveLeft.down) {
 //  Se c'è terreno sotto il robot ...
 if (ct.place.occupied(this, this.x, this.y + 1, 'Solid')) {
     // ... e il tasto W o la barra spaziale è premuta ...
-    if (ct.actions.Jump.down) {
+    if (actions.Jump.down) {
         // ... allora salta!
         this.vspeed = this.jumpSpeed;
     } else {

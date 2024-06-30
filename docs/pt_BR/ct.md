@@ -5,7 +5,7 @@
 * [ct.backgrounds](ct.backgrounds.html) gerencia os backgrounds;
 * [ct.camera](ct.camera.html) gerencia o viewport ou janela de exibição;
 * [ct.emitters](ct.emitters.html) sistema de partículas;
-* [ct.inputs](ct.inputs.html) e [ct.actions](ct.actions.html) para manipular entradas do usuário;
+* [ct.inputs](ct.inputs.html) e [actions](actions.html) para manipular entradas do usuário;
 * [ct.res](ct.res.html) para carregar os recursos;
 * [ct.rooms](ct.rooms.html) para altenar e empilhar varias rooms (por exemplo, para UI, iluminação, e gameplay);
 * [ct.sound](ct.sound.html) para tocar e ajustar os efeitos sonoros;

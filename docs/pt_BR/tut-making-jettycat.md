@@ -141,13 +141,13 @@ Você pode [ler mais sobre ações aqui](actions.html).
 Adicione o código abaixo no evento `On Step` do nosso gato:
 
 ```js
-if (ct.actions.Poof.down) {
+if (actions.Poof.down) {
     this.gravity = 2;
     this.addSpeed(ct.delta * 4, 90);
 }
 ```
 
-`if (ct.actions.Poof.down)` funciona apenas quando o player clica ou toca a tela. Se houve uma interação dessa com a tela, definimos uma força gravitacional que faz o gato cair e adcionaremos uma velocidade que faz o gato subir. Precisamos multiplicar a velocidade adicionada com `ct.delta` para que funcione sem problemas em todas as ocasiões.
+`if (actions.Poof.down)` funciona apenas quando o player clica ou toca a tela. Se houve uma interação dessa com a tela, definimos uma força gravitacional que faz o gato cair e adcionaremos uma velocidade que faz o gato subir. Precisamos multiplicar a velocidade adicionada com `ct.delta` para que funcione sem problemas em todas as ocasiões.
 
 ::: tip ct.delta
 `ct.delta` será igual a 1 na maior parte do tempo, mas este multiplicador não deve ser esquecido. Se a framerate(taxa de quadros) de um player cair ou o jogo atrasar por algum motivo, `ct.delta` se tornará um valor maior para compensar essas quedas e atrasos de frames. Por exemplo, se a framerate(taxa de quadros) cair de 60 frames por segundo para 30, então `ct.delta` será temporariamente igual a 2.
@@ -156,7 +156,7 @@ Além disso, o `ct.delta` suporta stretching(alongamento) de tempo no jogo e per
 :::
 
 ::: tip Dica
-Também existe o `ct.actions.Poof.pressed` e `ct.actions.Poof.released` que retorna `true` quando um player inicia e para de clicar ou tocar a tela.
+Também existe o `actions.Poof.pressed` e `actions.Poof.released` que retorna `true` quando um player inicia e para de clicar ou tocar a tela.
 :::
 
 A gravidade definida em "On Step" parece estranha, certo? Na verdade ela é uma constante que seria melhor colocada no evento "On Create" para que seja definida apenas uma vez no início e assim não mude mais. Mas deixar onde ela está nesse momento, permite que tenhamos o nosso pulo do gato, sacaram o trocadilho ? ;-), o que significa que o gato só vai começar a cair quando o player iniciar interação com o jogo! Assim o player não pederá o jogo instantaneamente, uma vez que o gato atingiria o chão rapidamente.

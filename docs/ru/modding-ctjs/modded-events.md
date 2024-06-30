@@ -227,7 +227,7 @@ Ct.js поддерживает следующие типы аргументов:
     "codeTargets": ["thisOnStep"],
     "inlineCodeTemplates": {
         /* This matches with codeTargets with its keys*/
-        "thisOnStep": "if (ct.actions[/*%%action%%*/].pressed) {\n/*%%USER_CODE%%*/\n}"
+        "thisOnStep": "if (actions[/*%%action%%*/].pressed) {\n/*%%USER_CODE%%*/\n}"
     }
 }
 ```

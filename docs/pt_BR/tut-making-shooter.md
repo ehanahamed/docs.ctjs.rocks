@@ -128,7 +128,7 @@ Escreva o código abaixo:
  * Veja o painel Project > Actions and input methods e "Actions" na documentação.
  */
 
-this.x += 8 * ct.delta * ct.actions.MoveX.value; // Move pelo eixo X
+this.x += 8 * ct.delta * actions.MoveX.value; // Move pelo eixo X
 
 
 /**
@@ -144,11 +144,11 @@ if (this.x > camera.width) { // A nave saiu dos limites pela direita?
 this.move();
 ```
 
-Aqui nós estamos usando as ações criadas. Primeiro, tentamos mover a nave horizontalmente através da definição da sua coordenada `x` na linha 6. `ct.actions.MoveX` retornará `1` se pressionarmos a tecla de navegação para a direita ou se a tecla "D" for pressionada, e retornará `-1` se o player pressionar a tecla de navegação esquerda ou se a tecla "A" for pressionada. Agora, se nada for pressionado, ele retornará `0`, zero, desabilitando assim o movimento horizontal.
+Aqui nós estamos usando as ações criadas. Primeiro, tentamos mover a nave horizontalmente através da definição da sua coordenada `x` na linha 6. `actions.MoveX` retornará `1` se pressionarmos a tecla de navegação para a direita ou se a tecla "D" for pressionada, e retornará `-1` se o player pressionar a tecla de navegação esquerda ou se a tecla "A" for pressionada. Agora, se nada for pressionado, ele retornará `0`, zero, desabilitando assim o movimento horizontal.
 
 `ct.delta` é necessário para compensar os possíveis atrasos e perdas de FPS. Normalmente o valor é igual a `1` e não adiciona muito, mas o movimento acelerará se alguns frames forem perdidos.
 
-Por fim, multiplicamos o valor obtido através `ct.delta * ct.actions.MoveX.value` pelo valor da velocidade que desejamos, `8`.
+Por fim, multiplicamos o valor obtido através `ct.delta * actions.MoveX.value` pelo valor da velocidade que desejamos, `8`.
 
 Depois verificamos se a coordenada X está fora da viewport(janela de visualização). Aqui `0` representa o lado esquerdo da room e `camera.width` representa a largura horizontal do jogo.
 
@@ -239,7 +239,7 @@ Agora é a hora das armas 😎
 Abra o aba "Templates" e em `On Step` do template `PlayerShip` adicione o trecho de código abaixo:
 
 ```js
-if (ct.actions.Shoot.pressed) {
+if (actions.Shoot.pressed) {
     ct.templates.copy('Laser_Blue', this.x, this.y);
 }
 ```
