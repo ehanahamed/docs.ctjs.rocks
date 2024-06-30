@@ -1,6 +1,6 @@
 # emitters
 
-O módulo `ct.emitters` permite que você dispare efeitos de partículas, anexando as copies ou fazendo seguir uma.
+O módulo `emitters` permite que você dispare efeitos de partículas, anexando as copies ou fazendo seguir uma.
 
 Internamente, ele tem como base o [módulo `pixi-particles` criado por CloudKid](https://github.com/pixijs/pixi-particles).
 
