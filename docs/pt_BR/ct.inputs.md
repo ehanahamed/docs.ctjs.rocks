@@ -1,8 +1,8 @@
-# ct.inputs, ct.actions
+# inputs, actions
 
-Esse módulo (`ct.inputs`) permite manipular [Ações](/actions.html). Você pode criar novas ações durante o jogo, modificando ou deletando as mesmas.
+Esse módulo (`inputs`) permite manipular [Ações](actions.html). Você pode criar novas ações durante o jogo, modificando ou deletando as mesmas.
 
-`ct.actions` armazena as ações existentes. Se você criou uma ação `Move`, Então ela estará disponível em `ct.actions.Move`. Cada uma delas é uma instância da classe JS `CtAction`.
+`actions` armazena as ações existentes. Se você criou uma ação `Move`, Então ela estará disponível em `actions.Move`. Cada uma delas é uma instância da classe JS `CtAction`.
 
 Aqui está um exemplo genérico de como usar ações em seu jogo:
 
@@ -12,10 +12,10 @@ Aqui está um exemplo genérico de como usar ações em seu jogo:
  * See Settings > Edit actions panel
  * and "Actions" in the docs.
  */
-this.hspeed = 8 * ct.actions.MoveX.value; // Move by X axis
-this.vspeed = 8 * ct.actions.MoveY.value; // Move by Y axis
-if (ct.actions.Shoot.pressed) {
-    ct.types.copy('Bullet', this.x, this.y);
+this.hspeed = 8 * actions.MoveX.value; // Move by X axis
+this.vspeed = 8 * actions.MoveY.value; // Move by Y axis
+if (actions.Shoot.pressed) {
+    types.copy('Bullet', this.x, this.y);
 }
 ```
 
