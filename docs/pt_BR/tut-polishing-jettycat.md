@@ -160,7 +160,7 @@ Aqui estão algumas instruções de como você pode criar esse efeito:
 
 Quando você tiver terminado, click no botão "Apply" na parte inferior da coluna esquerda.
 
-Para criar uma explosão de estrelas quando uma maior é coletada, vá para aba "Templates" e click em `Star`, navegue até a aba "On Destroy" e escreve a linha `ct.emitters.fire('StarBurst', this.x, this.y);`. Ta-da!
+Para criar uma explosão de estrelas quando uma maior é coletada, vá para aba "Templates" e click em `Star`, navegue até a aba "On Destroy" e escreve a linha `emitters.fire('StarBurst', this.x, this.y);`. Ta-da!
 
 ::: tip Dica
 Aqui estamos lendo a posição da estrela (`this.x, this.y`) e dizendo para gerar um efeito `StarBurst`.
@@ -186,15 +186,15 @@ Aqui estão algumas instruções:
 Para adicionar o efeito ao gato, abra o seu template e vá para a aba "On Create", em seguida adicione depois da última linha o trecho de código abaixo:
 
 ```js
-this.jet = ct.emitters.follow(this, 'Jet');
+this.jet = emitters.follow(this, 'Jet');
 ```
 
-`ct.emitters.follow` diz para criar um efeito de partícula e determina que ele deve seguir a copy. Pra gente, ele parecerá que está anexado ao gato. O primeiro argumento é a cópia à qual queremos anexar o efeito (`this` é o nosso gato), o segundo é o nome do efeito (`'Jet'`).
+`emitters.follow` diz para criar um efeito de partícula e determina que ele deve seguir a copy. Pra gente, ele parecerá que está anexado ao gato. O primeiro argumento é a cópia à qual queremos anexar o efeito (`this` é o nosso gato), o segundo é o nome do efeito (`'Jet'`).
 
 Também guardamos uma referência desse emissor para a propriedade `this.jet`. Isso nos permitirá manipular o emissor depois.
 
 ::: tip Dica
-Leia [a documentação para o `ct.emitters`](ct.emitters.html) para aprender mais sobre outros métodos para a criação de efeitos e as suas opções.
+Leia [a documentação para o `emitters`](emitters.html) para aprender mais sobre outros métodos para a criação de efeitos e as suas opções.
 :::
 
 O gato agora deve ter um jato de fumaça saindo de sua jetpack(mochila a jato). Você pode precisar ajustar o tamanho das partículas do jato e a sua velocidade na aba "FX".

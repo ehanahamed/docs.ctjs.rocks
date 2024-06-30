@@ -5,31 +5,31 @@ O módulo `emitters` permite que você dispare efeitos de partículas, anexando 
 Internamente, ele tem como base o [módulo `pixi-particles` criado por CloudKid](https://github.com/pixijs/pixi-particles).
 
 ::: warning Alerta:
-Se você não tiver nenhum emissor de partículas em seu projeto, então o `ct.emitters` não estará disponível. Ele é empacotado apenas se você tiver um sistema emissor de partículas em seu projeto para tornar as compilações do navegador menores.
+Se você não tiver nenhum emissor de partículas em seu projeto, então o `emitters` não estará disponível. Ele é empacotado apenas se você tiver um sistema emissor de partículas em seu projeto para tornar as compilações do navegador menores.
 :::
 
 ## Criando efeitos
 
 Existem três métodos com lógica diferente, cada um para uma situação específica:
 
-* `ct.emitters.fire('NameOfTheTandem', x, y)` cria um efeito em uma posição específica, e isso é tudo. É útil para criar efeitos que não deve seguir alguma coisa ou se mover, como por exemplo, explosões, rajadas de luz ou efeitos de impacto/colisões.
-* `ct.emitters.follow(parentCopy, 'NameOfTheTandem')` são bons para um efeito de longa duração que deve ser anexado em uma copy. As partículas são deixadas para trás ao se mover. É adequado para situações de efeitos de fumaça, trilha, bolhas e por aí vai.
-* `ct.emitters.append(parentCopy, 'NameOfTheTandem')` é semelhante ao `follow`, mas partículas antigas são movidas com o emissor. É útil ao fazer bolhas de escudo mágicos ou para partículas que devem ficar dentro da copy (pense em recipiente móvel com líquido fervente e bolhas nele).
+* `emitters.fire('NameOfTheTandem', x, y)` cria um efeito em uma posição específica, e isso é tudo. É útil para criar efeitos que não deve seguir alguma coisa ou se mover, como por exemplo, explosões, rajadas de luz ou efeitos de impacto/colisões.
+* `emitters.follow(parentCopy, 'NameOfTheTandem')` são bons para um efeito de longa duração que deve ser anexado em uma copy. As partículas são deixadas para trás ao se mover. É adequado para situações de efeitos de fumaça, trilha, bolhas e por aí vai.
+* `emitters.append(parentCopy, 'NameOfTheTandem')` é semelhante ao `follow`, mas partículas antigas são movidas com o emissor. É útil ao fazer bolhas de escudo mágicos ou para partículas que devem ficar dentro da copy (pense em recipiente móvel com líquido fervente e bolhas nele).
 
 Agora veremos todos eles em ação (observe como a trilha reage ao movimento do robô):
 
-`ct.emitters.fire` | `ct.emitters.follow` | `ct.emitters.append`
+`emitters.fire` | `emitters.follow` | `emitters.append`
 -|-|-
 ![](../images/emittersFire.gif) | ![](../images/emittersFollow.gif) | ![](../images/emittersAppend.gif)
 
 ```js
 //  O código do exemplo "fire"
-ct.emitters.fire('HeartTrail', this.x, this.y - 70);
+emitters.fire('HeartTrail', this.x, this.y - 70);
 ```
 
 ```js
 // O exemplo "follow"
-ct.emitters.follow(this, 'HeartTrail', {
+emitters.follow(this, 'HeartTrail', {
     position: {
         x: 0,
         y: -70
@@ -39,7 +39,7 @@ ct.emitters.follow(this, 'HeartTrail', {
 
 ```js
 // O exemplo "append"
-ct.emitters.append(this, 'HeartTrail', {
+emitters.append(this, 'HeartTrail', {
     position: {
         x: 0,
         y: -70
@@ -49,7 +49,7 @@ ct.emitters.append(this, 'HeartTrail', {
 
 ## Opções adicionais
 
-Você pode ter notado que esses três métodos aceitam um parâmetro adicional (por exemplo, `ct.emitters.fire('NameOfAnEffect', x, y, options);`). Ele é um objeto e possui propriedades para ajustar a aparência e o comportamento de um efeito:
+Você pode ter notado que esses três métodos aceitam um parâmetro adicional (por exemplo, `emitters.fire('NameOfAnEffect', x, y, options);`). Ele é um objeto e possui propriedades para ajustar a aparência e o comportamento de um efeito:
 
 * `scale` — dimensiona o objeto com os parâmetros `x` e `y`.
 * `position` — defina isso para adicionar uma mudança no emissor de partículas relativo a copy na qual ele foi anexado ou relativo a copy que ele está seguindo. Não funciona com `ct.emitter.fire`.
@@ -59,12 +59,12 @@ Você pode ter notado que esses três métodos aceitam um parâmetro adicional (
 * `rotation` — rotação em graus.
 * `isUi` — se definida como `true`, será usado a unidade de tempo das camadas de UI. Isso afeta como os efeitos são simulados durante o efeito de câmera lenta e de pausa do jogo.
 * `depth` — a profundidade do emissor, pense em `depth` como o ordem de renderização no eixo z, o z-index. O padrão é `Infinity` (então ele vai ficar acima de qualquer coisa).
-* `room` — a room na qual o efeito será anexcado. O padrão é a room principal e atual de (ct.room). Isso não tem nenhum efeito com `ct.emitters.attach`, pois o pai ou dono do efeito já foi definido no primeiro parâmetro.
+* `room` — a room na qual o efeito será anexcado. O padrão é a room principal e atual de (ct.room). Isso não tem nenhum efeito com `emitters.attach`, pois o pai ou dono do efeito já foi definido no primeiro parâmetro.
 
 Cada propriedade é opcional. Um exemplo: se a gente quiser criar um pequeno efeito avermelhado acima de uma copy e que fique na mesma profundidade que a copy, poderíamos escrever o seguinte:
 
 ```js
-ct.emitters.follow(this, 'Debuff', {
+emitters.follow(this, 'Debuff', {
     scale: {
         x: 0.75,
         y: 0.75
@@ -82,11 +82,11 @@ ct.emitters.follow(this, 'Debuff', {
 
 Por si só, os efeitos criados se comportarão bem: eles pararão automaticamente quando o tempo acabar ou quando o dono deles forem destruídos, deixando um belo rastro de partículas. Mas as vezes precisamos limpar completamente o efeito ou pausá-lo e reiniciar depois ou quem sabe ainda, pará-lo complemente antes de seu término normal.
 
-Cada um dos métodos `ct.emitters.fire`, `ct.emitters.append` e `ct.emitters.follow` retorna uma referência para o efeito criado, o qual nós podemos usar:
+Cada um dos métodos `emitters.fire`, `emitters.append` e `emitters.follow` retorna uma referência para o efeito criado, o qual nós podemos usar:
 
 ```js
 // vamos criar um escudo de bolhas!
-this.shied = ct.emitters.append(this, 'BubbleEffect');
+this.shied = emitters.append(this, 'BubbleEffect');
 
 // Depois que não precisarmos mais dele:
 this.shield.stop();
