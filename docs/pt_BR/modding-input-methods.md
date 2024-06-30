@@ -21,15 +21,15 @@ Com esta lista, os usuários poderão selecionar seus novos métodos de entrada 
 }
 ```
 
-## 2. Escreva um código que atualize o `ct.inputs.registry`
+## 2. Escreva um código que atualize o `inputs.registry`
 
-Depois, você deve escrever o seu módulo para que atualize o `ct.inputs.registry`. É um objeto semelhante a um mapa com chaves iguais ao nome do seu módulo + código do sinal e valores numéricos de `-1` a `1`.
+Depois, você deve escrever o seu módulo para que atualize o `inputs.registry`. É um objeto semelhante a um mapa com chaves iguais ao nome do seu módulo + código do sinal e valores numéricos de `-1` a `1`.
 
 Aqui, `0` significa que não tem sinal (por exemplo, um botão não foi pressionado ou o direcional do gamepad está na sua posição de repouso). Os analógicos usarão o intervalo completo `(-1, 1)`, enquanto que os botões normalmente alternam entre `0` e `1`.
 
 ```js
-ct.inputs.registry['keyboard.keyW'] = 1;
-ct.inputs.registry['gamepad.LeftThumbX'] = 0.2;
+inputs.registry['keyboard.keyW'] = 1;
+inputs.registry['gamepad.LeftThumbX'] = 0.2;
 ```
 
 Dependendo do método de entrada que esteja implementando e da sua API nativa, você pode precisar verfificá-los a cada frame com [injeções](./modding-events-and-injections.html), ou monitorar os seus eventos.

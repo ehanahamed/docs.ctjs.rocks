@@ -21,15 +21,15 @@ With this list, users will be able to select your new input methods in ct.IDE, w
 }
 ```
 
-## 2. Write a code that updates `ct.inputs.registry`
+## 2. Write a code that updates `inputs.registry`
 
-Next, you should write your module so that it updates the `ct.inputs.registry`. It is a map-like object with keys equal to your module name + signal code and numerical values from `-1` to `1`.
+Next, you should write your module so that it updates the `inputs.registry`. It is a map-like object with keys equal to your module name + signal code and numerical values from `-1` to `1`.
 
 Here, `0` means that there is no signal (e.g. a button is not pressed or a gamepad's thumb is in its resting position). Analog sticks will use a full range of `(-1, 1)`, when buttons will usually alternate between `0` and `1`.
 
 ```js
-ct.inputs.registry['keyboard.keyW'] = 1;
-ct.inputs.registry['gamepad.LeftThumbX'] = 0.2;
+inputs.registry['keyboard.keyW'] = 1;
+inputs.registry['gamepad.LeftThumbX'] = 0.2;
 ```
 
 Depending on the input method you are implementing and its native API, you may need checking them at each frame with [injections](./events-and-injections.html), or listen to their events.
