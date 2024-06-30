@@ -84,13 +84,13 @@ Reseta o estado da ação, definindo o seu `value` para `0` e os estados de `pre
 
 ## Criando e removendo novas ações programaticamente
 
-### ct.inputs.addAction(name, methods) ⇒ <code>CtAction</code>
+### inputs.addAction(name, methods) ⇒ <code>CtAction</code>
 
-Adiciona uma nova ação e a coloca dentro de `ct.actions`.
+Adiciona uma nova ação e a coloca dentro de `actions`.
 
 | Parâmetro | Tipo | Descrição |
 | --- | --- | --- |
-name|String|O nome da ação, da forma que ela será usada em `ct.actions`.
+name|String|O nome da ação, da forma que ela será usada em `actions`.
 methods|Array\<Object\>|Uma lista dos métodos de entrada. Essa lista pode ser alterada depois.
 
 **Retorna:** `CtAction` – A ação criada
@@ -98,7 +98,7 @@ methods|Array\<Object\>|Uma lista dos métodos de entrada. Essa lista pode ser a
 **Exemplo:**
 
 ```js
-ct.inputs.addAction('Move', [{
+inputs.addAction('Move', [{
     code: 'keyboard.ArrowLeft',
     multiplier: -1
 }, {
@@ -111,7 +111,7 @@ ct.inputs.addAction('Move', [{
 }]);
 ```
 
-### ct.inputs.removeAction(name, methods) ⇒ <code>void</code>
+### inputs.removeAction(name, methods) ⇒ <code>void</code>
 
 Remove uma ação a partir do nome fornecido.
 
@@ -122,7 +122,7 @@ name|String|O nome de uma ação
 
 **Retorna:** `void` 
 
-## Criando novas ações sem adicioná-la ao ct.actions
+## Criando novas ações sem adicioná-la ao actions
 
 ### new CtAction(name)
 Cria uma nova ct action.
